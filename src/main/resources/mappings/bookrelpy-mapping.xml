@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BOOKREPLY">
+
+	<insert id="insert" parameterType="bookreply">
+	insert into book_reply(idx,seq,id,tag,ref ,ref_step,ref_level)
+	values(idx_reply.nextval,#{seq},#{id},#{tag},idx_reply.nextval,1,1)
+	</insert>
+	
+
+	
+	<delete id="delete" parameterType="bookreply">
+	delete from book_reply where idx = #{idx} 
+	</delete>
+	
+	<update id="update" parameterType="bookreply">
+	update book_reply set tag= #{tag} , updatefile= #{updatefilestr} , bname = #{bname} ,writer = #{writer}
+	where seq= #{seq}
+	</update>
+	
+
+	
+	<select id="select" resultType="bookreply">
+	select * from book_reply
+	</select>
+	
+	<select id="edit" resultType="bookreply" parameterType="bookreply">
+	select * from book_reply where seq=#{seq} and idx=#{idx}
+	</select>
+	
+	
+	
+	
+</mapper>

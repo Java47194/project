@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+  "-//mybatis.org//DTD Config 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+	<typeAliases>
+		
+		<typeAlias alias="book" type="com.springbook.biz.book.BookVo" />
+		<typeAlias alias="bookreply" type="com.springbook.biz.reply.BookReplyVo" />
+		<typeAlias alias="login" type="com.springbook.biz.login.LoginVo" />
+		
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappings/login-mapping.xml" />
+		<mapper resource="mappings/book-mapping.xml" />
+		<mapper resource="mappings/bookrelpy-mapping.xml" />
+	</mappers>
+ </configuration>
+  
+ 

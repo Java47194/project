@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BOOK">
+
+	<insert id="insert" parameterType="book">
+	insert into book(seq,id,tag ,updatefile,bname,writer)
+	values((select nvl(max(seq),0)+1 from book),#{id},#{tag},#{updatefilestr},#{bname},#{writer})
+	</insert>
+	
+	
+	
+	<delete id="delete" parameterType="book">
+	delete from book where seq = #{seq} 
+	</delete>
+	
+	<update id="update" parameterType="book">
+	update book set tag= #{tag} , updatefile= #{updatefilestr} , bname = #{bname} ,writer = #{writer}
+	where seq= #{seq}
+
+	
+	</update>
+	
+	<select id="edit" parameterType="book" resultType="book">
+	select seq , id,tag ,bname,writer, regdate, updatefile as updatefilestr from book where id=#{id}and seq=#{seq}
+	</select>
+	
+		<select id="board" parameterType="book" resultType="book">
+	select seq , id,tag ,bname,writer, regdate, updatefile as updatefilestr from book where seq = #{seq}
+	</select> 
+	
+		<select id="getboard" parameterType="book" resultType="book">
+	select seq , id,tag ,bname,writer, regdate, updatefile as updatefilestr from book where seq = #{seq}
+	</select> 
+	
+	
+	<select id="select" resultType="book">
+	select idx,seq,id,tag ,bname,writer, regdate, updatefile as updatefilestr  from book
+	</select>
+</mapper>

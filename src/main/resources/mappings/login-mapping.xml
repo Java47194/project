@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LOGIN">
+
+	<insert id="insert" parameterType="login">
+	insert into projectlogin(idx ,id ,pwd,year,gender,address,role)
+	values((select nvl(max(idx),0)+1 from projectlogin),#{id},#{pwd},#{year},#{gender},#{address},#{role})
+	</insert>
+	
+	<delete id="delete" parameterType="login">
+	delete from projectlogin where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="login">
+	update projectlogin set pwd=#{pwd},year=#{year},gender=#{gender},address=#{address} where id =#{id}
+	</update>
+	
+	<select id="edit" parameterType="login" resultType="login">
+	select * from projectlogin where id=#{id}
+	</select>
+	
+		<select id="getBoard" parameterType="login" resultType="login">
+	select * from projectlogin where id=#{id}
+	</select>
+	
+		<select id="login" parameterType="login" resultType="login">
+	select * from projectlogin where id=#{id} and pwd=#{pwd}
+	</select>
+	
+	<select id="select" resultType="login">
+	select * from projectlogin
+	</select>
+</mapper>
